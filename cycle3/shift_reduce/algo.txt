@@ -1,0 +1,45 @@
+Input:
+A string of grammar symbols (e.g., `i+i*(i-i)`)
+
+Output:
+Whether the input is **Accepted** or **Rejected**
+
+### **Step-by-Step Algorithm**
+
+1. Start
+
+2. Initialize
+
+   * `stack` as empty
+   * `top = -1`
+   * Read the input string into `inp[]`
+   * Find its length `len`
+
+3. Display table header:
+   Print `"Stack\t\tInput\t\tAction"`
+
+4. For each symbol `inp[i]` in the input string:
+   a. **SHIFT** – push `inp[i]` onto the stack (`top++`, `stack[top] = inp[i]`)
+   b. Print current `stack`, remaining input, and action as `"SHIFT"`.
+   c. **Call** `check_for_reduce(i)` to check if any reduction is possible.
+
+5. In `check_for_reduce(i)` function:
+
+   * Repeat until no reduction is possible:
+     a. If top 3 symbols match any rule’s RHS:
+
+     * Replace them with LHS `S`
+     * Print `"REDUCE"` action
+       b. If top symbol is `i`, replace it with `S` and print `"REDUCE"`
+
+   (Rules used: `S → S+S`, `S → S-S`, `S → (S)`, `S → i`)
+
+6. After input is fully scanned:
+
+   * If stack contains only `S`, print `"Accepted"`
+   * Else, print `"Rejected"`
+
+7. Stop
+
+
+Would you like me to write the **flowchart steps** (like you can draw in your record) for this same algorithm?
