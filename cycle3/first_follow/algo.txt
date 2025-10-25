@@ -1,0 +1,25 @@
+1. Input
+- Read the number of productions n
+- Read each production into prods[]
+
+2. Compute FIRST sets
+- For each non-terminal:
+- If it’s already computed, skip.
+- Otherwise:
+  * For each production A → α
+  * If α begins with a terminal, add it to FIRST(A)
+  * If α begins with a non-terminal B, recursively find FIRST(B)
+  * If B can derive ε (epsilon), continue to the next symbol
+  * Store results in firsts[]
+
+3. Compute FOLLOW sets
+- For each non-terminal:
+  *If it’s the start symbol, add $
+  *For every production A → αBβ:
+    *If β is a terminal, add β to FOLLOW(B)
+    *If β is a non-terminal, add FIRST(β) except ε to FOLLOW(B)
+    *If β → ε or B is at the end, add FOLLOW(A) to FOLLOW(B)
+    *Store in follows[]
+
+4. Display
+- Print FIRST and FOLLOW sets for all non-terminals.
