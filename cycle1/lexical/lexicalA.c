@@ -4,8 +4,9 @@
 #include <ctype.h>
 
 int isKeyword(char buffer[]){
-    char keyword[32][10]={"auto", "break", "case", "char","const", "continue","void","main","int"};
+    char keyword[32][10]={"auto", "break", "case", "char","const", "continue","void", "main","int"};
 
+    
     for(int i=0;i<32;++i){
         if(strcmp(keyword[i],buffer)==0)
             return 1;
@@ -15,6 +16,8 @@ int isKeyword(char buffer[]){
 
 int main(){
     char c,buffer[31],operators[]="+-*/%=";
+    char separators[]=",;.";
+    char parenthesis[]="(){}[]";
     FILE *fp;
     int i,j=0;
     fp=fopen("program.txt","r");
@@ -26,6 +29,14 @@ int main(){
         for(i=0;i<6;++i){
             if(c==operators[i])
                 printf("%c is operator\n",c);
+        }
+        for(i=0;i<3;i++){
+            if(c==separators[i])
+                printf("%c is separator\n",c);
+        }
+        for(i=0;i<6;i++){
+            if(c==parenthesis[i])
+                printf("%c is parenthesis\n",c);
         }
         if(isalnum(c)){
             buffer[j++]=c;
