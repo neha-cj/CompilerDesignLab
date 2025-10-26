@@ -11,20 +11,13 @@ void yyerror(const char *s);
 
 %%
 stmt:
-    FOR '(' assign_stmt ';' cond ';' assign_stmt ')' '{' '}'
-    {
-        printf("Valid FOR loop syntax\n");
-    }
+    FOR '(' assign_stmt ';' cond ';' assign_stmt ')' '{' '}'    {printf("Valid FOR loop syntax\n");}
 ;
 
 assign_stmt:
-      ID ASSIGN expr
+      ID ASSIGN ID
+    | ID ASSIGN NUM
     | ID PLUSPLUS
-;
-
-expr:
-      ID
-    | NUM
 ;
 
 cond:
