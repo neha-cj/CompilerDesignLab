@@ -9,6 +9,19 @@ char inp[100];
 int len = 0;
 int curr = 0;
 
+int Z()
+{
+    int result;
+    if (inp[curr] == '+' && inp[curr + 1] == 'i')
+    {
+        curr += 2;
+        result = Z();
+        if (result == 1)
+            return 1;
+    }
+    return 1;
+}
+
 int E()
 {
     int result;
@@ -22,19 +35,6 @@ int E()
             return -1;
     }
     return -1;
-}
-
-int Z()
-{
-    int result;
-    if (inp[curr] == '+' && inp[curr + 1] == 'i')
-    {
-        curr += 2;
-        result = Z();
-        if (result == 1)
-            return 1;
-    }
-    return 1;
 }
 
 int main()
