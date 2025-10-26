@@ -78,21 +78,17 @@ void findfinalstate(){
     }
 }
 
-
-
 void main()
 {
     int i, j, k, m, t, n;
     struct node *temp;
     printf("Enter the number of alphabets: ");
     scanf("%d", &numAlphabets);
-    getchar();
+    
     printf("NOTE:Use letter e as epsilon. e must be last character, if it is present\n");
     printf("\nEnter the alphabets: ");
-    for (i = 0; i < numAlphabets; i++)
-    {
-        alphabets[i] = getchar();
-        getchar();
+    for (i = 0; i < numAlphabets; i++){
+        scanf(" %c",&alphabets[i]);
     }
     printf("Enter the number of states: ");
     scanf("%d", &numStates);
