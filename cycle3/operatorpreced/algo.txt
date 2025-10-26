@@ -1,0 +1,62 @@
+
+### **Algorithm: Operator Precedence Parser**
+
+1. **Include headers and define constants**
+
+   * Include `<stdio.h>` and `<string.h>`.
+   * Define `MAX = 100`.
+
+2. **Declare global variables**
+
+   * `char stack[MAX], input[MAX], symbols[]`.
+   * `int top = -1`.
+
+3. **Initialize the operator precedence table** for all symbols.
+
+4. **Main function**
+
+   1. Initialize `i = 0` and `char action`.
+   2. Input the string (must end with `$`).
+   3. Push `$` onto the empty stack.
+   4. Print the header for formatted output (`Stack | Input | Action`).
+
+5. **Parsing loop: `while(1)`**
+
+   1. Display the current stack and remaining input (`display(i)`).
+   2. Find the **nearest terminal** on the stack (`getTopTerminalIndex() → row`).
+   3. Get the **current input symbol** (`getIndex(input[i]) → col`).
+   4. If `row == -1` or `col == -1`, print `Error` and **break**.
+   5. Check **accept condition**:
+
+      ```
+      input[i] == '$' && top == 1 && stack[0] == '$' && stack[1] == 'E'
+      ```
+
+      → If true, print `Accept` and **break**.
+   6. Get `action = prec[row][col]` from the precedence table.
+   7. **If `action` is '<' or '='** and `input[i] != '$'`
+
+      * Print `Shift`.
+      * Push the input symbol to the stack (`push(input[i])`).
+      * Increment `i`.
+   8. **Else if `action` is '>'**
+
+      * Call `reduce()`.
+      * In `reduce()`:
+
+        1. Check top of stack for each grammar rule:
+
+           * `E + E` or `E * E → E`
+           * `( E ) → E`
+           * `i → E`
+        2. If a rule matches, perform reduction, return `1`.
+        3. Else, return `0`.
+      * If `reduce()` returned `1`, print `Reduce`.
+      * Else, print `Error` and **break**.
+   9. **Else** (`action` not `<`, `=`, or `>`), print `Error` and **break**.
+
+6. **End of parsing loop**
+
+   * Input is either accepted (parsed successfully) or rejected (error occurred).
+
+
