@@ -25,12 +25,6 @@ void push(char c) {
     stack[++top] = c;
 }
 
-/* Pop top of stack */
-void pop() {
-    if (top >= 0)
-        top--;
-}
-
 /* Display current stack and remaining input */
 void display(int i) {
     for (int k = 0; k <= top; k++)
@@ -85,7 +79,6 @@ int reduce() {
         stack[top] = 'E';
         return 1;
     }
-
     return 0; // No valid reduction
 }
 
