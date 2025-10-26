@@ -1,0 +1,55 @@
+
+1. **Start the program.**
+
+2. **Declare necessary variables and arrays:**
+
+   * `result[20][20]` → to store the list of states in the epsilon closure of the current state.
+   * `copy[3]` → to store a copy of the current state name for display.
+   * `states[20][20]` → to store all states entered by the user.
+   * `state1[3], input[3], state2[3]` → for reading each transition from the file.
+   * Integers `i`, `k`, `n`, and `end` → for loops and counters.
+
+3. **Open the transition file:**
+
+   * Open `"input.txt"` in **read mode** using
+     `fopen("input.txt", "r")`.
+
+4. **Input the number of states and their names:**
+
+   * Ask the user to enter total number of states `n`.
+   * Read `n` state names and store them in the array `states[][]`.
+
+5. **For each state in `states[]`, find its ε-closure:**
+
+   * Initialize `i = 0`.
+   * Copy the current state into both `state` and `copy`.
+   * Add this state to `result[i]` using `add_state(state, i++)`.
+     (Every ε-closure contains the state itself.)
+
+6. **Read transitions from the file:**
+
+   * Use `fscanf()` to read `state1`, `input`, and `state2` until end of file.
+   * For each line:
+
+     * If `state` = `state1` **and** `input` = `"e"`,
+       then there is an epsilon transition.
+     * Add `state2` to `result[i]`.
+       (`add_state(state2, i++)`)
+     * Copy `state2` into `state` to continue following ε transitions.
+
+7. **When the end of the file is reached:**
+
+   * Display the ε-closure of the current state by printing all states stored in `result[]`.
+   * Reset file pointer to the beginning using `rewind(INPUT)` for the next state.
+
+8. **Repeat steps 5–7 for all states.**
+
+9. **Close the file** using `fclose(INPUT)`.
+
+10. **Stop the program.**
+
+
+
+
+
+Would you like me to also write a **short theory + aim + algorithm + output** version (the lab record format)?
