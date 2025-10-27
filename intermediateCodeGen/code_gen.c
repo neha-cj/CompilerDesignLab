@@ -9,14 +9,15 @@ void gen_code_for_operator(char *inp, char op , char *reg){
             printf("%c\t%c\t%c\t%c\n",op, *reg, inp[i-1], inp[i+1]);
             temp[j-1]= *reg;
             i+=2;
-        }else{
-            temp[j++]=inp[i];
+            (*reg)--;
+            continue;
         }
+        temp[j++]=inp[i];
         i++;
     }
     temp[j]='\0';
     strcpy(inp,temp);
-    (*reg)--;
+    
 }
 
 void gen_code(char *inp){
