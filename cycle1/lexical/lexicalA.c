@@ -4,9 +4,12 @@
 #include <ctype.h>
 
 int isKeyword(char buffer[]){
-    char keyword[32][10]={"auto", "break", "case", "char","const", "continue","void", "main","int"};
-
-    
+    char keyword[32][10] = {
+    "auto", "break", "case", "char", "const", "continue", "default", "do",
+    "double", "else", "enum", "extern", "float", "for", "goto", "if",
+    "int", "long", "register", "return", "short", "signed", "sizeof", "static",
+    "struct", "switch", "typedef", "union", "unsigned", "void", "volatile", "while"
+    };
     for(int i=0;i<32;++i){
         if(strcmp(keyword[i],buffer)==0)
             return 1;
