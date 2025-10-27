@@ -49,7 +49,3 @@
 10. **Stop the program.**
 
 
-
-
-
-Would you like me to also write a **short theory + aim + algorithm + output** version (the lab record format)?
