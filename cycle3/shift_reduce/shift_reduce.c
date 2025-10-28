@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <string.h>
 
+// S -> S + S
+// S -> S - S
+// S -> (S)
+// S -> i
 char inp[100];
 int len;
 char stack[100];
